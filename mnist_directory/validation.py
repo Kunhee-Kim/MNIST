@@ -38,5 +38,5 @@ def validation(te_dataloader, cnn_model, args):
     if te_total != 0:
         te_accuracy = te_correct / te_total
 
-    print('test loss : %f' % te_avg_loss)
+    print('validation loss : %f' % te_avg_loss)
     print('accuracy : %f' % te_accuracy)

@@ -36,7 +36,7 @@ layer_features = np.ones(layers)
 layer_dropout = np.zeros(layers)
 """
 layer_features = np.array([128, 10])
-layer_dropout = np.array([0.25, 0.5]) # dropout = 0 if not used
+layer_dropout = np.array([0.25, 0.5])  # dropout = 0 if not used
 
 splits = 4
 
@@ -76,11 +76,11 @@ val_dataloader_1 = DataLoader(val1_mnist, batch_size=batch_size, shuffle=True, d
 def main(args):
     kfold = KFold(n_splits=splits, shuffle=True, random_state=True)
     dataloader = dataload.dataloader(args)
-    k=0
+    k = 0
     model_final = Model.CNN(args)
     for train_index, val_index in kfold.split(dataloader.train_mnist):
 
-        k+=1
+        k += 1
         print('K-fold : ', k)
 
         # k-fold split
@@ -94,10 +94,9 @@ def main(args):
         training.training(train_sub_dataloader, model, args)
         validation.validation(val_sub_dataloader, model, args)
 
-        if k == 5:
-            model_final = model
+        model_final = model
 
-    #testing
+    # testing
     testing.testing(dataloader.test_dataloader, model_final, args)
 
     return
