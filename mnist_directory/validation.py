@@ -40,3 +40,5 @@ def validation(te_dataloader, cnn_model, args):
 
     print('validation loss : %f' % te_avg_loss)
     print('accuracy : %f' % te_accuracy)
+
+    return te_avg_loss, te_accuracy

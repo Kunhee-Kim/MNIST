@@ -14,6 +14,7 @@ def training(tr_dataloader, cnn_model, args):
     training_batch = len(tr_dataloader)
     tr_criterion = nn.CrossEntropyLoss()
     tr_optimizer = torch.optim.Adam(cnn_model.parameters(), lr=args.learning_rate)
+    loss = 0
 
     for epoch in range(args.training_epochs):
         avg_loss = 0
@@ -33,3 +34,6 @@ def training(tr_dataloader, cnn_model, args):
             avg_loss += loss/training_batch
 
         print('[Epoch: {:>4}] cost = {:>.9}'.format(epoch + 1, avg_loss))
+        loss = avg_loss
+
+    return loss
